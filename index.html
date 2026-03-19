@@ -4,728 +4,850 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Camino de Santiago · Agosto 2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #f5f0e8;
-    --parchment: #ede5d0;
-    --brown-dark: #3b2a1a;
-    --brown-mid: #6b4c2a;
-    --brown-light: #a07850;
-    --gold: #c9973a;
-    --gold-light: #e8c47a;
-    --green-path: #5a7a4a;
-    --shadow: rgba(59,42,26,0.15);
-    --red-done: #8b3a2a;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background-color: var(--cream);
-    color: var(--brown-dark);
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 60px 20px;
-    background:
-      radial-gradient(ellipse at 20% 80%, rgba(201,151,58,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(90,122,74,0.15) 0%, transparent 60%),
-      var(--cream);
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a07850' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  .scallop {
-    font-size: 64px;
-    line-height: 1;
-    margin-bottom: 24px;
-    animation: float 4s ease-in-out infinite;
-    filter: drop-shadow(0 4px 12px rgba(201,151,58,0.4));
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-
-  .hero-eyebrow {
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    font-weight: 700;
-    line-height: 1.05;
-    color: var(--brown-dark);
-    margin-bottom: 8px;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--brown-mid);
-  }
-
-  .hero-subtitle {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
-    color: var(--brown-light);
-    margin-bottom: 48px;
-    letter-spacing: 0.03em;
-  }
-
-  .stats-row {
-    display: flex;
-    gap: 48px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 16px;
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--brown-dark);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--brown-light);
-    margin-top: 4px;
-  }
-
-  .divider {
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, transparent, var(--brown-light), transparent);
-    align-self: center;
-  }
-
-  /* ── SECTION HEADER ── */
-  .section-header {
-    text-align: center;
-    padding: 80px 20px 48px;
-  }
-
-  .section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    color: var(--brown-dark);
-    margin-bottom: 12px;
-  }
-
-  .section-header p {
-    color: var(--brown-light);
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-  }
-
-  .ornament {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin: 24px 0 0;
-  }
-
-  .ornament-line {
-    height: 1px;
-    width: 80px;
-    background: linear-gradient(to right, transparent, var(--gold));
-  }
-
-  .ornament-line.rev {
-    background: linear-gradient(to left, transparent, var(--gold));
-  }
-
-  .ornament-diamond {
-    width: 8px;
-    height: 8px;
-    background: var(--gold);
-    transform: rotate(45deg);
-    flex-shrink: 0;
-  }
-
-  /* ── TIMELINE ── */
-  .timeline {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-    position: relative;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--gold-light), var(--brown-light));
-    transform: translateX(-50%);
-  }
-
-  .timeline-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
-    margin-bottom: 56px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-  .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-  .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-  .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-  .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-  .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .timeline-item:nth-child(odd) {
-    flex-direction: row-reverse;
-  }
-
-  .timeline-item:nth-child(odd) .card {
-    text-align: right;
-  }
-
-  .timeline-item:nth-child(odd) .card-meta {
-    justify-content: flex-end;
-  }
-
-  .timeline-node {
-    flex-shrink: 0;
-    width: 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .node-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--parchment);
-    border: 2px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    box-shadow: 0 4px 20px rgba(201,151,58,0.25);
-    transition: transform 0.2s;
-  }
-
-  .timeline-item:hover .node-circle {
-    transform: scale(1.15);
-    background: var(--gold);
-  }
-
-  .node-day {
-    margin-top: 8px;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.75rem;
-    color: var(--brown-light);
-    white-space: nowrap;
-  }
-
-  .card {
-    flex: 1;
-    background: white;
-    border-radius: 12px;
-    padding: 24px 28px;
-    box-shadow: 0 2px 20px var(--shadow);
-    border: 1px solid rgba(201,151,58,0.15);
-    transition: box-shadow 0.25s, transform 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(to right, var(--gold), var(--gold-light));
-  }
-
-  .card:hover {
-    box-shadow: 0 8px 40px var(--shadow);
-    transform: translateY(-3px);
-  }
-
-  .card-stage {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    color: var(--brown-dark);
-    margin-bottom: 4px;
-    line-height: 1.2;
-  }
-
-  .card-location {
-    font-size: 0.88rem;
-    color: var(--brown-light);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .timeline-item:nth-child(odd) .card-location {
-    justify-content: flex-end;
-  }
-
-  .card-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
-
-  .badge-done {
-    background: rgba(139,58,42,0.1);
-    color: var(--red-done);
-  }
-
-  .badge-price {
-    background: rgba(201,151,58,0.12);
-    color: var(--brown-mid);
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
-  }
-
-  .card-dates {
-    font-size: 0.8rem;
-    color: var(--brown-light);
-    margin-left: auto;
-  }
-
-  .timeline-item:nth-child(odd) .card-dates {
-    margin-left: 0;
-    margin-right: auto;
-  }
-
-  /* ── FINAL DESTINATION ── */
-  .destination-final {
-    background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 100%);
-    color: var(--cream);
-    text-align: center;
-    padding: 80px 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .destination-final::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1.5' fill='%23c9973a' fill-opacity='0.2'/%3E%3C/svg%3E");
-  }
-
-  .dest-emoji {
-    font-size: 72px;
-    display: block;
-    margin-bottom: 24px;
-    filter: drop-shadow(0 4px 20px rgba(201,151,58,0.6));
-  }
-
-  .destination-final h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 5vw, 4rem);
-    margin-bottom: 8px;
-    color: var(--gold-light);
-  }
-
-  .destination-final p {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    color: rgba(245,240,232,0.75);
-    max-width: 480px;
-    margin: 0 auto 40px;
-  }
-
-  .total-cost {
-    display: inline-block;
-    border: 1px solid rgba(201,151,58,0.4);
-    border-radius: 12px;
-    padding: 24px 48px;
-    background: rgba(201,151,58,0.08);
-    backdrop-filter: blur(4px);
-  }
-
-  .total-cost-label {
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 8px;
-  }
-
-  .total-cost-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--gold-light);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    background: var(--parchment);
-    font-size: 0.85rem;
-    color: var(--brown-light);
-    letter-spacing: 0.05em;
-  }
-
-  footer strong {
-    color: var(--brown-dark);
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-  }
-
-  /* ── RESPONSIVE ── */
- @media (max-width: 640px) {
-
-  /* ── HERO ── */
-  .hero {
-    padding: 40px 16px;
-    min-height: auto;
-  }
-
-  .hero h1 {
-    font-size: 2.4rem;
-    line-height: 1.15;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-    margin-bottom: 32px;
-  }
-
-  .stats-row {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .divider {
-    display: none;
-  }
-
-  /* ── SECTION HEADER ── */
-  .section-header {
-    padding: 56px 16px 32px;
-  }
-
-  .section-header h2 {
-    font-size: 1.6rem;
-  }
-
-  /* ── TIMELINE ── */
-  .timeline {
-    padding: 0 16px 60px;
-  }
-
-  .timeline::before {
-    left: 20px;
-  }
-
-  .timeline-item,
-  .timeline-item:nth-child(odd) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-
-  .timeline-node {
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .node-circle {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-  }
-
-  .node-day {
-    margin-top: 0;
-    font-size: 0.7rem;
-  }
-
-  .card {
-    width: 100%;
-    padding: 18px 20px;
-  }
-
-  .card h3 {
-    font-size: 1.05rem;
-  }
-
-  .card-location {
-    font-size: 0.8rem;
-  }
-
-  .card-meta {
-    gap: 8px;
-  }
-
-  .badge {
-    font-size: 0.7rem;
-    padding: 3px 10px;
-  }
-
-  .card-dates {
-    font-size: 0.75rem;
-    margin-left: auto;
-  }
-
-  /* Reset cosas invertidas */
-  .timeline-item:nth-child(odd) .card,
-  .timeline-item:nth-child(odd) .card-meta,
-  .timeline-item:nth-child(odd) .card-location {
-    text-align: left;
-    justify-content: flex-start;
-  }
-
-  /* ── DESTINATION ── */
-  .destination-final {
-    padding: 60px 16px;
-  }
-
-  .destination-final h2 {
-    font-size: 2rem;
-  }
-
-  .total-cost {
-    padding: 16px 24px;
-  }
-
-  .total-cost-value {
-    font-size: 2.2rem;
-  }
-
+:root {
+  --ink: #1c140d;
+  --bark: #4a3120;
+  --clay: #8a5c38;
+  --sand: #c8a882;
+  --parchment: #f0e9dc;
+  --cream: #faf6f0;
+  --gold: #b8843a;
+  --gold-pale: #e8d4b0;
+  --moss: #4a6840;
+  --sky: #3a5878;
+  --rouge: #7a3428;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 12px rgba(28,20,13,0.08);
+  --shadow-md: 0 8px 32px rgba(28,20,13,0.12);
+  --shadow-lg: 0 20px 60px rgba(28,20,13,0.16);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ────────────────────────────────
+   HERO
+──────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(184,132,58,0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(74,104,64,0.15) 0%, transparent 60%);
+}
+
+.hero-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+.hero-icon {
+  font-size: 52px;
+  display: block;
+  margin-bottom: 28px;
+  animation: drift 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 24px rgba(184,132,58,0.5));
+}
+@keyframes drift { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-14px) rotate(2deg)} }
+
+.hero-kicker {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 600;
+  line-height: 0.95;
+  color: var(--parchment);
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.hero h1 em { font-style: italic; color: var(--gold-pale); }
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--sand);
+  margin-bottom: 56px;
+  line-height: 1.6;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.stat-item {
+  padding: 0 32px;
+  text-align: center;
+  border-right: 1px solid rgba(200,168,130,0.2);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  line-height: 1;
+  display: block;
+}
+.stat-lbl {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-top: 5px;
+  display: block;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--sand);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 1;
+  animation: fadeIn 2s ease 1s both;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: grow 2s ease-in-out infinite;
+}
+@keyframes grow { 0%,100%{height:20px;opacity:0.3} 50%{height:40px;opacity:1} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* ────────────────────────────────
+   NAV / SECTION TITLES
+──────────────────────────────── */
+.section-title {
+  text-align: center;
+  padding: 80px 24px 56px;
+}
+.section-title h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+.section-title p {
+  color: var(--clay);
+  font-size: 0.95rem;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+.rule-line { height: 1px; width: 60px; background: linear-gradient(to right, transparent, var(--gold)); }
+.rule-line.r { background: linear-gradient(to left, transparent, var(--gold)); }
+.rule-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+/* ────────────────────────────────
+   ETAPAS — TIMELINE VERTICAL
+──────────────────────────────── */
+.etapas { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+.etapa-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(184,132,58,0.12);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: slideUp 0.5s ease forwards;
+}
+.etapa-card:nth-child(1){animation-delay:0.05s}
+.etapa-card:nth-child(2){animation-delay:0.1s}
+.etapa-card:nth-child(3){animation-delay:0.15s}
+.etapa-card:nth-child(4){animation-delay:0.2s}
+.etapa-card:nth-child(5){animation-delay:0.25s}
+.etapa-card:nth-child(6){animation-delay:0.3s}
+@keyframes slideUp { to { opacity:1; transform:translateY(0); } }
+
+.etapa-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Colour strip top */
+.etapa-card::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(to right, var(--gold), var(--gold-pale));
+}
+
+/* Header row — always visible, click to expand */
+.etapa-header {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.etapa-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--parchment);
+  border: 2px solid var(--gold-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.etapa-card.open .etapa-icon,
+.etapa-card:hover .etapa-icon {
+  background: var(--gold-pale);
+  border-color: var(--gold);
+}
+
+.etapa-meta { min-width: 0; }
+
+.etapa-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.etapa-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.etapa-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: var(--parchment);
+  color: var(--clay);
+}
+.pill.km { background: rgba(74,49,32,0.08); color: var(--bark); }
+.pill.easy { background: rgba(74,104,64,0.1); color: var(--moss); }
+.pill.medium { background: rgba(184,132,58,0.12); color: var(--gold); }
+.pill.hard { background: rgba(122,52,40,0.1); color: var(--rouge); }
+.pill.price { background: rgba(184,132,58,0.1); color: var(--bark); font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; }
+.pill.done { background: rgba(74,104,64,0.08); color: var(--moss); }
+
+.etapa-chevron {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--parchment);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s, background 0.2s;
+  color: var(--clay);
+}
+.etapa-card.open .etapa-chevron { transform: rotate(180deg); background: var(--gold-pale); }
+
+/* Expandable body */
+.etapa-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.etapa-card.open .etapa-body { max-height: 600px; }
+
+.etapa-inner {
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--parchment);
+}
+
+/* Route info */
+.route-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0 18px;
+  font-size: 0.82rem;
+  color: var(--clay);
+}
+.route-from, .route-to {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.route-arrow {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sand);
+}
+.route-arrow::before, .route-arrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold-pale);
+}
+
+/* Personal note */
+.personal-note {
+  background: linear-gradient(135deg, var(--parchment), #f5ece0);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--bark);
+}
+
+/* Action buttons */
+.action-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--gold-pale);
+}
+.btn-primary:hover { background: var(--bark); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.btn-outline {
+  background: transparent;
+  color: var(--bark);
+  border: 1.5px solid var(--gold-pale);
+}
+.btn-outline:hover { background: var(--parchment); transform: translateY(-1px); }
+
+/* ────────────────────────────────
+   GASTRONOMÍA & CONSEJOS
+──────────────────────────────── */
+.grid-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 640px) { .grid-section { grid-template-columns: 1fr; } }
+
+.info-block {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(184,132,58,0.1);
+}
+.info-block-full {
+  grid-column: 1 / -1;
+}
+.info-block-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.info-block-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.icon-food { background: rgba(176,90,26,0.1); }
+.icon-tip { background: rgba(74,104,64,0.1); }
+.icon-pack { background: rgba(58,88,120,0.1); }
+
+.info-block h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.info-block p.subtitle {
+  font-size: 0.8rem;
+  color: var(--clay);
+  margin-top: 2px;
+}
+
+.resto-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--parchment);
+}
+.resto-item:last-child { border-bottom: none; padding-bottom: 0; }
+.resto-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.resto-info { flex: 1; }
+.resto-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.resto-desc {
+  font-size: 0.8rem;
+  color: var(--clay);
+  line-height: 1.5;
+}
+.resto-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: var(--parchment);
+  color: var(--gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Mochila grid */
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.pack-item {
+  background: var(--parchment);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--bark);
+  font-weight: 400;
+  transition: background 0.2s;
+}
+.pack-item:hover { background: var(--gold-pale); }
+.pack-item span { font-size: 18px; flex-shrink: 0; }
+.pack-essential {
+  border: 1.5px solid var(--gold-pale);
+}
+
+/* ────────────────────────────────
+   FINAL BANNER
+──────────────────────────────── */
+.finale {
+  background: var(--ink);
+  color: var(--parchment);
+  text-align: center;
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.finale-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(184,132,58,0.25) 0%, transparent 70%);
+}
+.finale-content { position: relative; z-index: 1; }
+.finale-icon { font-size: 64px; display: block; margin-bottom: 24px; filter: drop-shadow(0 0 30px rgba(184,132,58,0.6)); }
+.finale h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 600;
+  color: var(--gold-pale);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.finale-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--sand);
+  margin-bottom: 48px;
+}
+.price-display {
+  display: inline-block;
+  border: 1px solid rgba(184,132,58,0.35);
+  border-radius: var(--radius);
+  padding: 28px 56px;
+  background: rgba(184,132,58,0.07);
+  backdrop-filter: blur(8px);
+}
+.price-label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 8px;
+}
+.price-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--gold-pale);
+  line-height: 1;
+}
+
+footer {
+  background: #141008;
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 0.8rem;
+  color: var(--clay);
+  letter-spacing: 0.05em;
+}
+footer strong { color: var(--sand); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+/* ────────────────────────────────
+   RESPONSIVE
+──────────────────────────────── */
+@media (max-width: 480px) {
+  .stat-item { padding: 0 16px; }
+  .stat-num { font-size: 1.8rem; }
+  .etapa-header { grid-template-columns: 44px 1fr auto; gap: 12px; padding: 18px 16px; }
+  .etapa-inner { padding: 0 16px 20px; }
+  .info-block { padding: 20px; }
+  .price-display { padding: 24px 32px; }
 }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <header class="hero">
-  <div class="scallop">🐚</div>
-  <p class="hero-eyebrow">Diario de peregrinación · Agosto 2025</p>
-  <h1>Camino de<br><em>Santiago</em></h1>
-  <p class="hero-subtitle">De Sarria a la Catedral · 7 días · Camino Francés</p>
-
-  <div class="stats-row">
-    <div class="stat">
-      <div class="stat-value">7</div>
-      <div class="stat-label">Días</div>
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <span class="hero-icon">🐚</span>
+    <span class="hero-kicker">Diario de peregrinación · Agosto 2025</span>
+    <h1>Camino de<br><em>Santiago</em></h1>
+    <p class="hero-sub">De Sarria a la Catedral · Camino Francés · 7 días</p>
+    <div class="stats">
+      <div class="stat-item"><span class="stat-num">7</span><span class="stat-lbl">Días</span></div>
+      <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Etapas</span></div>
+      <div class="stat-item"><span class="stat-num">~115</span><span class="stat-lbl">Kilómetros</span></div>
+      <div class="stat-item"><span class="stat-num">116€</span><span class="stat-lbl">Alojamiento</span></div>
     </div>
-    <div class="divider"></div>
-    <div class="stat">
-      <div class="stat-value">6</div>
-      <div class="stat-label">Etapas</div>
-    </div>
-    <div class="divider"></div>
-    <div class="stat">
-      <div class="stat-value">~115</div>
-      <div class="stat-label">Kilómetros</div>
-    </div>
-    <div class="divider"></div>
-    <div class="stat">
-      <div class="stat-value">116,74€</div>
-      <div class="stat-label">Alojamiento</div>
-    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
   </div>
 </header>
 
-<!-- TIMELINE -->
+<!-- ── ETAPAS ── -->
 <section>
-  <div class="section-header">
+  <div class="section-title">
     <h2>Las Etapas</h2>
-    <p>Cada noche, un albergue. Cada mañana, el camino.</p>
-    <div class="ornament">
-      <div class="ornament-line"></div>
-      <div class="ornament-diamond"></div>
-      <div class="ornament-line rev"></div>
-    </div>
+    <p>Haz clic en cada día para ver la experiencia, consejos y dónde alojarte.</p>
+    <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line r"></div></div>
   </div>
 
-  <div class="timeline">
+  <div class="etapas">
 
-    <!-- Etapa 1 -->
-    <div class="timeline-item">
-      <div class="timeline-node">
-        <div class="node-circle">🏔️</div>
-        <div class="node-day">1 ago</div>
+    <!-- ETAPA 1 -->
+    <div class="etapa-card open">
+      <div class="etapa-header" onclick="toggle(this)">
+        <div class="etapa-icon">🏔️</div>
+        <div class="etapa-meta">
+          <div class="etapa-label">Etapa 1 · 1 ago</div>
+          <div class="etapa-name">Andaina · Sarria</div>
+          <div class="etapa-pills">
+            <span class="pill km">🥾 22,2 km</span>
+            <span class="pill easy">● Fácil</span>
+            <span class="pill price">16,24 €</span>
+            <span class="pill done">✓ Completada</span>
+          </div>
+        </div>
+        <div class="etapa-chevron">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
-      <div class="card">
-        <p class="card-stage">Etapa 1 · Punto de partida</p>
-        <h3>Andaina</h3>
-        <p class="card-location">📍 Sarria</p>
-        <div class="card-meta">
-          <span class="badge badge-done">✓ Completada</span>
-          <span class="badge badge-price">16,24 €</span>
-          <span class="card-dates">1 – 2 ago</span>
+      <div class="etapa-body">
+        <div class="etapa-inner">
+          <div class="route-bar">
+            <span class="route-from">Sarria</span>
+            <span class="route-arrow"><span>→</span></span>
+            <span class="route-to">Portomarín</span>
+          </div>
+          <div class="personal-note">
+            Sales muy motivado e ilusionado — disfruta esa energía del primer día. Sal pronto y disfruta.<br><br>
+            Coge una piedra al inicio del camino y guárdala. Cuando estés preparado para soltar ese pensamiento o esa preocupación, la dejarás ir.<br><br>
+            Recuerda recoger la <strong>credencial del peregrino</strong> — el documento que irás sellando en cada etapa para obtener la Compostela al llegar a Santiago. Durante el camino verás personas que por dinero te pondrán sellos de cera no oficiales; los válidos son en iglesias, albergues y bares habilitados.<br><br>
+            Al llegar a Portomarín: <strong>hazte la foto típica en las escaleras</strong> y toca la campana.
+          </div>
+          <div class="action-row">
+            <a href="https://www.booking.com/hotel/es/andaina.es.html" target="_blank" class="btn btn-primary">📅 Ver en Booking</a>
+            <a href="https://www.hostelandaina.com/es" target="_blank" class="btn btn-outline">🌐 Web oficial</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Etapa 2 -->
-    <div class="timeline-item">
-      <div class="timeline-node">
-        <div class="node-circle">🌉</div>
-        <div class="node-day">2 ago</div>
+    <!-- ETAPA 2 -->
+    <div class="etapa-card">
+      <div class="etapa-header" onclick="toggle(this)">
+        <div class="etapa-icon">🌉</div>
+        <div class="etapa-meta">
+          <div class="etapa-label">Etapa 2 · 2 ago</div>
+          <div class="etapa-name">Pons Minea · Portomarín</div>
+          <div class="etapa-pills">
+            <span class="pill km">🥾 24,8 km</span>
+            <span class="pill medium">● Fácil-Media</span>
+            <span class="pill price">15,00 €</span>
+            <span class="pill done">✓ Completada</span>
+          </div>
+        </div>
+        <div class="etapa-chevron">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
-      <div class="card">
-        <p class="card-stage">Etapa 2</p>
-        <h3>Pons Minea</h3>
-        <p class="card-location">📍 Portomarín</p>
-        <div class="card-meta">
-          <span class="badge badge-done">✓ Completada</span>
-          <span class="badge badge-price">15,00 €</span>
-          <span class="card-dates">2 – 3 ago</span>
+      <div class="etapa-body">
+        <div class="etapa-inner">
+          <div class="route-bar">
+            <span class="route-from">Portomarín</span>
+            <span class="route-arrow"><span>→</span></span>
+            <span class="route-to">Palas de Rei</span>
+          </div>
+          <div class="personal-note">
+            Hay tramos de carretera que a veces pueden hacerse pesados — pero el paisaje gallego y la compañía del camino lo compensan.<br><br>
+            Para a comer en el <strong>Restaurante Mercadoiro</strong> en Laje, a mitad de etapa. Vale mucho la pena.
+          </div>
+          <div class="action-row">
+            <a href="https://www.booking.com/hotel/es/pons-minea.es.html" target="_blank" class="btn btn-primary">📅 Ver en Booking</a>
+            <a href="https://ponsminea.com/" target="_blank" class="btn btn-outline">🌐 Web oficial</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Etapa 3 -->
-    <div class="timeline-item">
-      <div class="timeline-node">
-        <div class="node-circle">🏰</div>
-        <div class="node-day">3 ago</div>
+    <!-- ETAPA 3 -->
+    <div class="etapa-card">
+      <div class="etapa-header" onclick="toggle(this)">
+        <div class="etapa-icon">⛰️</div>
+        <div class="etapa-meta">
+          <div class="etapa-label">Etapa 3 · 3 ago</div>
+          <div class="etapa-name">Albergue San Marcos · Palas de Rei</div>
+          <div class="etapa-pills">
+            <span class="pill km">🥾 28,5 km</span>
+            <span class="pill hard">● Dificultad alta</span>
+            <span class="pill price">19,00 €</span>
+            <span class="pill done">✓ Completada</span>
+          </div>
+        </div>
+        <div class="etapa-chevron">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
-      <div class="card">
-        <p class="card-stage">Etapa 3</p>
-        <h3>Albergue San Marcos</h3>
-        <p class="card-location">📍 Palas de Rei</p>
-        <div class="card-meta">
-          <span class="badge badge-done">✓ Completada</span>
-          <span class="badge badge-price">19,00 €</span>
-          <span class="card-dates">3 – 4 ago</span>
+      <div class="etapa-body">
+        <div class="etapa-inner">
+          <div class="route-bar">
+            <span class="route-from">Palas de Rei</span>
+            <span class="route-arrow"><span>→</span></span>
+            <span class="route-to">Arzúa</span>
+          </div>
+          <div class="personal-note">
+            Para mí de las más duras. Larga, con desnivel, y una <strong>bajada rompepiernas al final que es terrible</strong> — doy fe. Sal pronto y lleva bastones si tienes.<br><br>
+            Eso sí — a mitad de etapa pasas por <strong>Melide</strong>. Para en la <strong>Pulpería Ezequiel</strong>. Es obligatorio. El mejor pulpo del Camino, desde 1953.
+          </div>
+          <div class="action-row">
+            <a href="https://www.booking.com/hotel/es/albergue-san-marcos.es.html" target="_blank" class="btn btn-primary">📅 Ver en Booking</a>
+            <a href="https://alberguesanmarcos.es/" target="_blank" class="btn btn-outline">🌐 Web oficial</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Etapa 4 -->
-    <div class="timeline-item">
-      <div class="timeline-node">
-        <div class="node-circle">🌌</div>
-        <div class="node-day">4 ago</div>
+    <!-- ETAPA 4 -->
+    <div class="etapa-card">
+      <div class="etapa-header" onclick="toggle(this)">
+        <div class="etapa-icon">🌲</div>
+        <div class="etapa-meta">
+          <div class="etapa-label">Etapa 4 · 4 ago</div>
+          <div class="etapa-name">Albergue Vía Láctea · Arzúa</div>
+          <div class="etapa-pills">
+            <span class="pill km">🥾 19,3 km</span>
+            <span class="pill medium">● Media</span>
+            <span class="pill price">17,00 €</span>
+            <span class="pill done">✓ Completada</span>
+          </div>
+        </div>
+        <div class="etapa-chevron">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
-      <div class="card">
-        <p class="card-stage">Etapa 4</p>
-        <h3>Albergue Vía Láctea</h3>
-        <p class="card-location">📍 Arzúa</p>
-        <div class="card-meta">
-          <span class="badge badge-done">✓ Completada</span>
-          <span class="badge badge-price">17,00 €</span>
-          <span class="card-dates">4 – 5 ago</span>
+      <div class="etapa-body">
+        <div class="etapa-inner">
+          <div class="route-bar">
+            <span class="route-from">Arzúa</span>
+            <span class="route-arrow"><span>→</span></span>
+            <span class="route-to">O Pedrouzo</span>
+          </div>
+          <div class="personal-note">
+            Desnivel y bosque — muy bonita. El bosque gallego de eucaliptos te acompaña casi todo el tramo. Una de las más agradables del recorrido.<br><br>
+            Al llegar, el <strong>Bar O Pedrouzo</strong> es el sitio para sentarte y tomarte algo bien merecido.
+          </div>
+          <div class="action-row">
+            <a href="https://www.booking.com/hotel/es/albergue-via-lactea-arzua.es.html" target="_blank" class="btn btn-primary">📅 Ver en Booking</a>
+            <a href="https://www.alberguevialactea.com/" target="_blank" class="btn btn-outline">🌐 Web oficial</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Etapa 5 -->
-    <div class="timeline-item">
-      <div class="timeline-node">
-        <div class="node-circle">🌿</div>
-        <div class="node-day">5 ago</div>
+    <!-- ETAPA 5 -->
+    <div class="etapa-card">
+      <div class="etapa-header" onclick="toggle(this)">
+        <div class="etapa-icon">🌅</div>
+        <div class="etapa-meta">
+          <div class="etapa-label">Etapa 5 · 5 ago · La última</div>
+          <div class="etapa-name">Albergue O Trisquel · O Pedrouzo</div>
+          <div class="etapa-pills">
+            <span class="pill km">🥾 19,4 km</span>
+            <span class="pill medium">● Fácil-Media</span>
+            <span class="pill price">20,50 €</span>
+            <span class="pill done">✓ Completada</span>
+          </div>
+        </div>
+        <div class="etapa-chevron">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
-      <div class="card">
-        <p class="card-stage">Etapa 5 · Última noche antes de llegar</p>
-        <h3>Albergue O Trisquel</h3>
-        <p class="card-location">📍 O Pedrouzo</p>
-        <div class="card-meta">
-          <span class="badge badge-done">✓ Completada</span>
-          <span class="badge badge-price">20,50 €</span>
-          <span class="card-dates">5 – 6 ago</span>
+      <div class="etapa-body">
+        <div class="etapa-inner">
+          <div class="route-bar">
+            <span class="route-from">O Pedrouzo</span>
+            <span class="route-arrow"><span>→</span></span>
+            <span class="route-to">Santiago de Compostela</span>
+          </div>
+          <div class="personal-note">
+            Estarás cansado, pero la motivación y las ganas de llegar te harán disfrutarla — aunque es un poco triste saber que el camino se acaba en esta ocasión.<br><br>
+            El inicio tiene subida y los kilómetros de los días anteriores pesan, pero con la ilusión de llegar, se disfruta. Sal pronto — si quieres llegar a la <strong>Misa Internacional del Peregrino a las 12h</strong>, madruga.
+          </div>
+          <div class="action-row">
+            <a href="https://www.booking.com/hotel/es/albergue-o-trisquel.es.html" target="_blank" class="btn btn-primary">📅 Ver en Booking</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Etapa 6 -->
-    <div class="timeline-item">
-      <div class="timeline-node">
-        <div class="node-circle">⛪</div>
-        <div class="node-day">6 ago</div>
+    <!-- ETAPA 6 — SANTIAGO -->
+    <div class="etapa-card">
+      <div class="etapa-header" onclick="toggle(this)">
+        <div class="etapa-icon">⛪</div>
+        <div class="etapa-meta">
+          <div class="etapa-label">Noche en Santiago · 6 ago</div>
+          <div class="etapa-name">Seminario Menor · Santiago</div>
+          <div class="etapa-pills">
+            <span class="pill km">🎖️ ¡Llegada!</span>
+            <span class="pill price">29,00 €</span>
+            <span class="pill done">✓ Completada</span>
+          </div>
+        </div>
+        <div class="etapa-chevron">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
-      <div class="card">
-        <p class="card-stage">Etapa 6 · Llegada a Santiago</p>
-        <h3>Albergue Seminario Menor</h3>
-        <p class="card-location">📍 Santiago de Compostela</p>
-        <div class="card-meta">
-          <span class="badge badge-done">✓ Completada</span>
-          <span class="badge badge-price">29,00 €</span>
-          <span class="card-dates">6 – 7 ago</span>
+      <div class="etapa-body">
+        <div class="etapa-inner">
+          <div class="route-bar">
+            <span class="route-from">Plaza del Obradoiro</span>
+            <span class="route-arrow"><span>→</span></span>
+            <span class="route-to">Catedral de Santiago</span>
+          </div>
+          <div class="personal-note">
+            Recoge la <strong>Compostela</strong> en la Oficina del Peregrino (Rúa das Carretas, 33) con tu credencial sellada. Es el documento que acredita que lo has hecho.<br><br>
+            Asiste a la Misa Internacional del Peregrino a las 12h — el Botafumeiro volará sobre ti. Muy emocionante.<br><br>
+            Para celebrarlo: cena en el <strong>Restaurante MarieMine</strong>. Te lo has ganado.
+          </div>
+          <div class="action-row">
+            <a href="https://www.booking.com/hotel/es/albergue-seminario-menor.es.html" target="_blank" class="btn btn-primary">📅 Ver en Booking</a>
+            <a href="https://www.alberguesdelcamino.com/santiago/albergue-seminario-menor/" target="_blank" class="btn btn-outline">🌐 Web oficial</a>
+          </div>
         </div>
       </div>
     </div>
@@ -733,21 +855,125 @@
   </div>
 </section>
 
-<!-- FINAL -->
-<section class="destination-final">
-  <span class="dest-emoji">🎖️</span>
-  <h2>¡Buen Camino!</h2>
-  <p>Santiago de Compostela alcanzada el 7 de agosto de 2025</p>
-  <div class="total-cost">
-    <div class="total-cost-label">Total alojamiento</div>
-    <div class="total-cost-value">116,74 €</div>
+<!-- ── GASTRONOMÍA & MOCHILA ── -->
+<section style="background: var(--parchment); padding: 4px 0 80px;">
+  <div class="section-title">
+    <h2>Para el Camino</h2>
+    <p>Dónde comer y qué llevar en la mochila.</p>
+    <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line r"></div></div>
+  </div>
+
+  <div class="grid-section">
+
+    <!-- Restaurantes -->
+    <div class="info-block">
+      <div class="info-block-header">
+        <div class="info-block-icon icon-food">🍽️</div>
+        <div>
+          <h3>Dónde comer</h3>
+          <p class="subtitle">Sitios de interés por etapa</p>
+        </div>
+      </div>
+      <div class="resto-item">
+        <div class="resto-dot"></div>
+        <div class="resto-info">
+          <div class="resto-name">Restaurante Mercadoiro</div>
+          <div class="resto-desc">Laje · Etapa 2. A mitad de etapa, parada perfecta para recargar.</div>
+        </div>
+        <span class="resto-tag">Etapa 2</span>
+      </div>
+      <div class="resto-item">
+        <div class="resto-dot"></div>
+        <div class="resto-info">
+          <div class="resto-name">Mesón A Brea</div>
+          <div class="resto-desc">Palas de Rei · Cocina gallega tradicional, ambiente peregrino.</div>
+        </div>
+        <span class="resto-tag">Etapa 2</span>
+      </div>
+      <div class="resto-item">
+        <div class="resto-dot"></div>
+        <div class="resto-info">
+          <div class="resto-name">Pulpería Ezequiel 🐙</div>
+          <div class="resto-desc">Melide · Etapa 3. Desde 1953. El pulpo más famoso del Camino Francés. Obligatorio.</div>
+        </div>
+        <span class="resto-tag">Etapa 3</span>
+      </div>
+      <div class="resto-item">
+        <div class="resto-dot"></div>
+        <div class="resto-info">
+          <div class="resto-name">Bar O Pedrouzo</div>
+          <div class="resto-desc">O Pedrouzo · Para descansar al llegar a la penúltima etapa.</div>
+        </div>
+        <span class="resto-tag">Etapa 4</span>
+      </div>
+      <div class="resto-item">
+        <div class="resto-dot"></div>
+        <div class="resto-info">
+          <div class="resto-name">Restaurante MarieMine</div>
+          <div class="resto-desc">Santiago de Compostela · Para celebrar la llegada con una buena cena.</div>
+        </div>
+        <span class="resto-tag">Santiago</span>
+      </div>
+    </div>
+
+    <!-- Mochila -->
+    <div class="info-block">
+      <div class="info-block-header">
+        <div class="info-block-icon icon-pack">🎒</div>
+        <div>
+          <h3>La Mochila</h3>
+          <p class="subtitle">Lo indispensable para el Camino</p>
+        </div>
+      </div>
+      <div class="pack-grid">
+        <div class="pack-item pack-essential"><span>👟</span>Botas rodadas</div>
+        <div class="pack-item pack-essential"><span>🩹</span>Tiritas / curas ampollas</div>
+        <div class="pack-item pack-essential"><span>🧦</span>Calcetines técnicos</div>
+        <div class="pack-item pack-essential"><span>🌧️</span>Chubasquero</div>
+        <div class="pack-item"><span>🚶</span>Bastones</div>
+        <div class="pack-item pack-essential"><span>🧴</span>Crema anti-rozaduras</div>
+        <div class="pack-item pack-essential"><span>📓</span>Credencial</div>
+        <div class="pack-item"><span>💊</span>Ibuprofeno</div>
+        <div class="pack-item"><span>🔦</span>Frontal / linterna</div>
+        <div class="pack-item"><span>🧴</span>Protector solar</div>
+        <div class="pack-item"><span>🔋</span>Power bank</div>
+        <div class="pack-item"><span>🎧</span>Auriculares</div>
+        <div class="pack-item"><span>🪨</span>Tu piedra del camino</div>
+        <div class="pack-item"><span>💧</span>Botella de agua</div>
+        <div class="pack-item"><span>🥜</span>Snacks energéticos</div>
+        <div class="pack-item"><span>🛏️</span>Saco de dormir ligero</div>
+      </div>
+      <p style="margin-top:16px; font-size:0.75rem; color:var(--clay); line-height:1.6;">💡 La mochila no debería superar el <strong>10% de tu peso corporal</strong>. Menos es más en el Camino.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FINALE ── -->
+<section class="finale">
+  <div class="finale-bg"></div>
+  <div class="finale-content">
+    <span class="finale-icon">🎖️</span>
+    <h2>¡Buen Camino!</h2>
+    <p class="finale-sub">Santiago de Compostela · 7 de agosto de 2025</p>
+    <div class="price-display">
+      <div class="price-label">Total alojamiento</div>
+      <div class="price-value">116,74 €</div>
+    </div>
   </div>
 </section>
 
 <footer>
   <p>✦ <strong>Camino de Santiago · Agosto 2025</strong> ✦</p>
-  <p style="margin-top:8px">Sarria → Portomarín → Palas de Rei → Arzúa → O Pedrouzo → Santiago de Compostela</p>
+  <p style="margin-top:6px; font-size:0.75rem;">Sarria · Portomarín · Palas de Rei · Arzúa · O Pedrouzo · Santiago de Compostela</p>
 </footer>
+
+<script>
+  function toggle(header) {
+    const card = header.closest('.etapa-card');
+    card.classList.toggle('open');
+  }
+</script>
 
 </body>
 </html>
