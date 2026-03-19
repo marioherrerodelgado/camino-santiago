@@ -451,26 +451,129 @@
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .timeline::before { left: 24px; }
-    .timeline-item,
-    .timeline-item:nth-child(odd) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .timeline-node {
-      flex-direction: row;
-      gap: 12px;
-      align-items: center;
-    }
-    .node-day { margin-top: 0; }
-    .timeline-item:nth-child(odd) .card { text-align: left; }
-    .timeline-item:nth-child(odd) .card-meta { justify-content: flex-start; }
-    .timeline-item:nth-child(odd) .card-location { justify-content: flex-start; }
-    .timeline-item:nth-child(odd) .card-dates { margin-left: auto; margin-right: 0; }
-    .divider { display: none; }
-    .stats-row { gap: 28px; }
+ @media (max-width: 640px) {
+
+  /* ── HERO ── */
+  .hero {
+    padding: 40px 16px;
+    min-height: auto;
   }
+
+  .hero h1 {
+    font-size: 2.4rem;
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    padding: 56px 16px 32px;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    padding: 0 16px 60px;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(odd) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .timeline-node {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .node-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .node-day {
+    margin-top: 0;
+    font-size: 0.7rem;
+  }
+
+  .card {
+    width: 100%;
+    padding: 18px 20px;
+  }
+
+  .card h3 {
+    font-size: 1.05rem;
+  }
+
+  .card-location {
+    font-size: 0.8rem;
+  }
+
+  .card-meta {
+    gap: 8px;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+
+  .card-dates {
+    font-size: 0.75rem;
+    margin-left: auto;
+  }
+
+  /* Reset cosas invertidas */
+  .timeline-item:nth-child(odd) .card,
+  .timeline-item:nth-child(odd) .card-meta,
+  .timeline-item:nth-child(odd) .card-location {
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  /* ── DESTINATION ── */
+  .destination-final {
+    padding: 60px 16px;
+  }
+
+  .destination-final h2 {
+    font-size: 2rem;
+  }
+
+  .total-cost {
+    padding: 16px 24px;
+  }
+
+  .total-cost-value {
+    font-size: 2.2rem;
+  }
+
+}
 </style>
 </head>
 <body>
