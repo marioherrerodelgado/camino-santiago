@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camino de Santiago · Agosto 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --parchment: #ede5d0;
+    --brown-dark: #3b2a1a;
+    --brown-mid: #6b4c2a;
+    --brown-light: #a07850;
+    --gold: #c9973a;
+    --gold-light: #e8c47a;
+    --green-path: #5a7a4a;
+    --shadow: rgba(59,42,26,0.15);
+    --red-done: #8b3a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--brown-dark);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(201,151,58,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(90,122,74,0.15) 0%, transparent 60%),
+      var(--cream);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a07850' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .scallop {
+    font-size: 64px;
+    line-height: 1;
+    margin-bottom: 24px;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 4px 12px rgba(201,151,58,0.4));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--brown-dark);
+    margin-bottom: 8px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--brown-mid);
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--brown-light);
+    margin-bottom: 48px;
+    letter-spacing: 0.03em;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--brown-dark);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    margin-top: 4px;
+  }
+
+  .divider {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, var(--brown-light), transparent);
+    align-self: center;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    text-align: center;
+    padding: 80px 20px 48px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--brown-dark);
+    margin-bottom: 12px;
+  }
+
+  .section-header p {
+    color: var(--brown-light);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0 0;
+  }
+
+  .ornament-line {
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+
+  .ornament-line.rev {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .ornament-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold-light), var(--brown-light));
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 56px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+  .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+  .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  .timeline-item:nth-child(odd) .card {
+    text-align: right;
+  }
+
+  .timeline-item:nth-child(odd) .card-meta {
+    justify-content: flex-end;
+  }
+
+  .timeline-node {
+    flex-shrink: 0;
+    width: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .node-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--parchment);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 20px rgba(201,151,58,0.25);
+    transition: transform 0.2s;
+  }
+
+  .timeline-item:hover .node-circle {
+    transform: scale(1.15);
+    background: var(--gold);
+  }
+
+  .node-day {
+    margin-top: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    color: var(--brown-light);
+    white-space: nowrap;
+  }
+
+  .card {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 20px var(--shadow);
+    border: 1px solid rgba(201,151,58,0.15);
+    transition: box-shadow 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 40px var(--shadow);
+    transform: translateY(-3px);
+  }
+
+  .card-stage {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--brown-dark);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .card-location {
+    font-size: 0.88rem;
+    color: var(--brown-light);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .timeline-item:nth-child(odd) .card-location {
+    justify-content: flex-end;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-done {
+    background: rgba(139,58,42,0.1);
+    color: var(--red-done);
+  }
+
+  .badge-price {
+    background: rgba(201,151,58,0.12);
+    color: var(--brown-mid);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+  }
+
+  .card-dates {
+    font-size: 0.8rem;
+    color: var(--brown-light);
+    margin-left: auto;
+  }
+
+  .timeline-item:nth-child(odd) .card-dates {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  /* ── FINAL DESTINATION ── */
+  .destination-final {
+    background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 100%);
+    color: var(--cream);
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .destination-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1.5' fill='%23c9973a' fill-opacity='0.2'/%3E%3C/svg%3E");
+  }
+
+  .dest-emoji {
+    font-size: 72px;
+    display: block;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 4px 20px rgba(201,151,58,0.6));
+  }
+
+  .destination-final h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 8px;
+    color: var(--gold-light);
+  }
+
+  .destination-final p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(245,240,232,0.75);
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  .total-cost {
+    display: inline-block;
+    border: 1px solid rgba(201,151,58,0.4);
+    border-radius: 12px;
+    padding: 24px 48px;
+    background: rgba(201,151,58,0.08);
+    backdrop-filter: blur(4px);
+  }
+
+  .total-cost-label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+
+  .total-cost-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--parchment);
+    font-size: 0.85rem;
+    color: var(--brown-light);
+    letter-spacing: 0.05em;
+  }
+
+  footer strong {
+    color: var(--brown-dark);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .timeline::before { left: 24px; }
+    .timeline-item,
+    .timeline-item:nth-child(odd) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .timeline-node {
+      flex-direction: row;
+      gap: 12px;
+      align-items: center;
+    }
+    .node-day { margin-top: 0; }
+    .timeline-item:nth-child(odd) .card { text-align: left; }
+    .timeline-item:nth-child(odd) .card-meta { justify-content: flex-start; }
+    .timeline-item:nth-child(odd) .card-location { justify-content: flex-start; }
+    .timeline-item:nth-child(odd) .card-dates { margin-left: auto; margin-right: 0; }
+    .divider { display: none; }
+    .stats-row { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="scallop">🐚</div>
+  <p class="hero-eyebrow">Diario de peregrinación · Agosto 2025</p>
+  <h1>Camino de<br><em>Santiago</em></h1>
+  <p class="hero-subtitle">De Sarria a la Catedral · 7 días · Camino Francés</p>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-value">7</div>
+      <div class="stat-label">Días</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="stat-value">6</div>
+      <div class="stat-label">Etapas</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="stat-value">~115</div>
+      <div class="stat-label">Kilómetros</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="stat-value">116,74€</div>
+      <div class="stat-label">Alojamiento</div>
+    </div>
+  </div>
+</header>
+
+<!-- TIMELINE -->
+<section>
+  <div class="section-header">
+    <h2>Las Etapas</h2>
+    <p>Cada noche, un albergue. Cada mañana, el camino.</p>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line rev"></div>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <!-- Etapa 1 -->
+    <div class="timeline-item">
+      <div class="timeline-node">
+        <div class="node-circle">🏔️</div>
+        <div class="node-day">1 ago</div>
+      </div>
+      <div class="card">
+        <p class="card-stage">Etapa 1 · Punto de partida</p>
+        <h3>Andaina</h3>
+        <p class="card-location">📍 Sarria</p>
+        <div class="card-meta">
+          <span class="badge badge-done">✓ Completada</span>
+          <span class="badge badge-price">16,24 €</span>
+          <span class="card-dates">1 – 2 ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etapa 2 -->
+    <div class="timeline-item">
+      <div class="timeline-node">
+        <div class="node-circle">🌉</div>
+        <div class="node-day">2 ago</div>
+      </div>
+      <div class="card">
+        <p class="card-stage">Etapa 2</p>
+        <h3>Pons Minea</h3>
+        <p class="card-location">📍 Portomarín</p>
+        <div class="card-meta">
+          <span class="badge badge-done">✓ Completada</span>
+          <span class="badge badge-price">15,00 €</span>
+          <span class="card-dates">2 – 3 ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etapa 3 -->
+    <div class="timeline-item">
+      <div class="timeline-node">
+        <div class="node-circle">🏰</div>
+        <div class="node-day">3 ago</div>
+      </div>
+      <div class="card">
+        <p class="card-stage">Etapa 3</p>
+        <h3>Albergue San Marcos</h3>
+        <p class="card-location">📍 Palas de Rei</p>
+        <div class="card-meta">
+          <span class="badge badge-done">✓ Completada</span>
+          <span class="badge badge-price">19,00 €</span>
+          <span class="card-dates">3 – 4 ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etapa 4 -->
+    <div class="timeline-item">
+      <div class="timeline-node">
+        <div class="node-circle">🌌</div>
+        <div class="node-day">4 ago</div>
+      </div>
+      <div class="card">
+        <p class="card-stage">Etapa 4</p>
+        <h3>Albergue Vía Láctea</h3>
+        <p class="card-location">📍 Arzúa</p>
+        <div class="card-meta">
+          <span class="badge badge-done">✓ Completada</span>
+          <span class="badge badge-price">17,00 €</span>
+          <span class="card-dates">4 – 5 ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etapa 5 -->
+    <div class="timeline-item">
+      <div class="timeline-node">
+        <div class="node-circle">🌿</div>
+        <div class="node-day">5 ago</div>
+      </div>
+      <div class="card">
+        <p class="card-stage">Etapa 5 · Última noche antes de llegar</p>
+        <h3>Albergue O Trisquel</h3>
+        <p class="card-location">📍 O Pedrouzo</p>
+        <div class="card-meta">
+          <span class="badge badge-done">✓ Completada</span>
+          <span class="badge badge-price">20,50 €</span>
+          <span class="card-dates">5 – 6 ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etapa 6 -->
+    <div class="timeline-item">
+      <div class="timeline-node">
+        <div class="node-circle">⛪</div>
+        <div class="node-day">6 ago</div>
+      </div>
+      <div class="card">
+        <p class="card-stage">Etapa 6 · Llegada a Santiago</p>
+        <h3>Albergue Seminario Menor</h3>
+        <p class="card-location">📍 Santiago de Compostela</p>
+        <div class="card-meta">
+          <span class="badge badge-done">✓ Completada</span>
+          <span class="badge badge-price">29,00 €</span>
+          <span class="card-dates">6 – 7 ago</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="destination-final">
+  <span class="dest-emoji">🎖️</span>
+  <h2>¡Buen Camino!</h2>
+  <p>Santiago de Compostela alcanzada el 7 de agosto de 2025</p>
+  <div class="total-cost">
+    <div class="total-cost-label">Total alojamiento</div>
+    <div class="total-cost-value">116,74 €</div>
+  </div>
+</section>
+
+<footer>
+  <p>✦ <strong>Camino de Santiago · Agosto 2025</strong> ✦</p>
+  <p style="margin-top:8px">Sarria → Portomarín → Palas de Rei → Arzúa → O Pedrouzo → Santiago de Compostela</p>
+</footer>
+
+</body>
+</html>
